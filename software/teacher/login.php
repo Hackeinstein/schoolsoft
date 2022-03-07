@@ -5,8 +5,7 @@ session_start();
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | Login</title>
-
+  <title>Teacher | Login</title>
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
   <!-- Font Awesome -->
@@ -37,7 +36,7 @@ session_start();
 <body class="register-page" style="min-height: 570.781px;">
 <div class="register-box">
   <div class="register-logo">
-    iSchool<b>Soft</b> <span style="color: green;"><b>Admin</b></span>
+    iSchool<b>Soft</b> <span style="color: green;"><b>Teacher</b></span>
   </div>
 
   <div class="card">
@@ -52,7 +51,7 @@ session_start();
 
       <form action="process.php" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Username" name="admin_user" required="required" id="form">
+          <input type="text" class="form-control" placeholder="Username" name="teacher_user" required="required" id="form">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -60,7 +59,7 @@ session_start();
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="admin_pass" required="required" id="form">
+          <input type="password" class="form-control" placeholder="Password" name="teacher_pass" required="required" id="form">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -72,7 +71,7 @@ session_start();
         <div class="row">
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block" name="admin_login" >Login</button>
+            <button type="submit" class="btn btn-primary btn-block" name="teacher_login" >Login</button>
           </div>
           <!-- /.col -->
         </div>
@@ -92,4 +91,5 @@ session_start();
 <script src="../../dist/js/adminlte.min.js"></script>
 
 
-</body></html>
+</body>
+</html>

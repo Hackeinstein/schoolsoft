@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+include "../depend/database.php";
+if(!isset($_SESSION['teacher_id'])){
+    header('location:login.php');
+}
+ 
 //$student_id=$_SESSION['id'];
 ?>
 <!DOCTYPE html>

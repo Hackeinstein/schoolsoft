@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../depend/database.php";
-if(!isset($_SESSION['admin_id']) && !isset($_SESSION['login'])){
+if(!isset($_SESSION['admin_id'])){
     header('location:login.php');
 }else{
     //collect data for students
