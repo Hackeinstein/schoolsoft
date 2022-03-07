@@ -41,7 +41,7 @@ session_start();
     iSchool<b>Soft</b>
   </div>
 
-  <div class="card">
+  <div class="card"></div>
     <div class="card-body register-card-body">
         <?php
         if(isset($_SESSION['err'])){
