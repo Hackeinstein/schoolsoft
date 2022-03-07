@@ -38,10 +38,10 @@ session_start();
 <body class="register-page" style="min-height: 570.781px;">
 <div class="register-box">
   <div class="register-logo">
-    iSchool<b>Soft</b>
+    ischool<b>Soft</b>
   </div>
 
-  <div class="card"></div>
+  <div class="card">
     <div class="card-body register-card-body">
         <?php
         if(isset($_SESSION['err'])){
