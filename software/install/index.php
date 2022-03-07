@@ -38,7 +38,8 @@ session_start();
 <body class="register-page" style="min-height: 570.781px;">
 <div class="register-box">
   <div class="register-logo">
-    iSchool<b>Software</b>
+    iSchool<b>
+      Software</b>
   </div>
 
   <div class="card">
