@@ -9,21 +9,27 @@ if(isset($_POST['admin_login'])){
     $password=md5($admin_pass);
     //validate in database
 
-    $query1= "SELECT * FROM admin WHERE username = '{$admin_user}' AND password = '{$admin_pass}'
-    ";
+    $query1= "SELECT * FROM admin WHERE username = '{$admin_user}'";
     $result1=mysqli_query($db_connc,$query1);
 
-    if($result1){
-        //collect the admin_id and set session
-        $row1=mysqli_fetch_assoc($result1);
-        //set session with the admin_id
-        $_SESSION['login']="admin";
-        $_SESSION['admin_id']=$row1['admin_id'];
-        header('location:home.php');
-    }else{
+    if($row = mysqli_fetch_assoc($result1)){
+        if(md5($admin_pass) == $row["admin_pass"]){
+            //collect the admin_id and set session
+            //set session with the admin_id
+            $_SESSION['login']="admin";
+            $_SESSION['admin_id']=$row['admin_id'];
+            header('location:home.php');
+        }
+        else{
+            $_SESSION['err'] ="Incorrect Password!";
+            header('Location:login.php');       
+        }
+    }
+    else{
         $_SESSION['err'] ="User Not found";
         header('Location:login.php');
     }
+    
     
 }
 
