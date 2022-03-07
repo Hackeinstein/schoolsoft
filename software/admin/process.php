@@ -6,7 +6,6 @@ if(isset($_POST['admin_login'])){
     $admin_user=mysqli_real_escape_string($db_connc,htmlspecialchars($_POST['admin_user']));
     $admin_pass=mysqli_real_escape_string($db_connc,htmlspecialchars($_POST['admin_pass']));
 
-    $password=md5($admin_pass);
     //validate in database
 
     $query1= "SELECT * FROM admin WHERE username = '{$admin_user}'";
