@@ -247,6 +247,7 @@ if(!isset($_SESSION['admin_id']) && !isset($_SESSION['login'])){
                   </thead>
                   <tbody>
                     <?php
+                    //list all admins
                        $list_query=mysqli_query($db_connc,"SELECT * FROM admin");
                        while ($list=mysqli_fetch_assoc($list_query)){
                            echo "<tr>

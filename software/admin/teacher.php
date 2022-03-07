@@ -247,14 +247,15 @@ if(!isset($_SESSION['admin_id']) && !isset($_SESSION['login'])){
                   </thead>
                   <tbody>
                   <?php
-                       $list_query=mysqli_query($db_connc,"SELECT * FROM admin");
+                  //list all teachers
+                       $list_query=mysqli_query($db_connc,"SELECT * FROM teacher");
                        while ($list=mysqli_fetch_assoc($list_query)){
                            echo "<tr>
-                           <td>".$list['admin_id']."</td>
+                           <td>".$list['teacher_id']."</td>
                            <td>".$list['firstname']."</td>
                            <td>".$list['lastname']."</td>
                            <td>".$list['middlename']."</td>
-                           <td>".$list['role']."</td>
+                           <td>".$list['class']."</td>
                            <td><button class='btn btn-danger' name='edit'><i class='fa fa-edit'></i> Edit</button></td>
                            <TD><button class='btn btn-success'><i class='fa fa-eye'></i> View</button></TD>
                          </tr>";

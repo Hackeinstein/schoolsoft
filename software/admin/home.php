@@ -5,7 +5,7 @@ if(!isset($_SESSION['admin_id']) && !isset($_SESSION['login'])){
     header('location:login.php');
 }else{
     //collect data for students
-    $admin_id=3;
+    $admin_id=$_SESSION['admin_id'];
     $query= "SELECT * FROM admin WHERE admin_id = '{$admin_id}' ";
     $result=mysqli_query($db_connc,$query);
     $row=mysqli_fetch_assoc($result);

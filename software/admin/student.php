@@ -1,7 +1,14 @@
 <?php
 session_start();
-if(isset($_SESSION['student'])){
+include "../depend/database.php";
+if(!isset($_SESSION['admin_id']) && !isset($_SESSION['login'])){
     header('location:login.php');
+}else{
+    //collect data for admin
+    $admin_id=$_SESSION['admin_id'];
+    $query= "SELECT * FROM admin WHERE admin_id = '{$admin_id}' ";
+    $result=mysqli_query($db_connc,$query);
+    $row=mysqli_fetch_assoc($result);
 }
 ?>
 <!DOCTYPE html>
@@ -88,7 +95,7 @@ if(isset($_SESSION['student'])){
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo $row['firstname']." ".$row['lastname'];?></a>
         </div>
       </div>
 
@@ -237,24 +244,22 @@ if(isset($_SESSION['student'])){
                   </thead>
                   <tbody>
                     <tr>
-                      <td>1</td>
-                      <td>ANYILE</td>
-                      <td>VICTOR</td>
-                      <td>CHIBUIKE</td>
-                      <td>PRIMARY 6</td>
-                      <td><button class="btn btn-danger"><i class="fa fa-edit"></i> Edit</button></td>
-                      <TD><button class="btn btn-success"><i class="fa fa-eye"></i> View</button></TD>
-
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>OJO</td>
-                      <td>AYOMIDE</td>
-                      <td>STEPHEN</td>
-                      <td>PRIMARY 5</td>
-                      <td><button class="btn btn-danger"><i class="fa fa-edit"></i> Edit</button></td>
-                      <TD><button class="btn btn-success"><i class="fa fa-eye"></i> View</button></TD>
-                    </tr>
+                    <?php
+                    //list all students
+                       $list_query=mysqli_query($db_connc,"SELECT * FROM student");
+                       while ($list=mysqli_fetch_assoc($list_query)){
+                           echo "<tr>
+                           <td>".$list['student_id']."</td>
+                           <td>".$list['firstname']."</td>
+                           <td>".$list['lastname']."</td>
+                           <td>".$list['middlename']."</td>
+                           <td>".$list['class']."</td>
+                           <td><button class='btn btn-danger' name='edit'><i class='fa fa-edit'></i> Edit</button></td>
+                           <TD><button class='btn btn-success'><i class='fa fa-eye'></i> View</button></TD>
+                         </tr>";
+                       }
+    
+                    ?>
                   </tbody>
                 </table>
               </div>
