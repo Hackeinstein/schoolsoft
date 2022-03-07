@@ -4,6 +4,23 @@ session_start();
 include "../depend/database.php";
 if(!isset($_SESSION['teacher_id'])){
     header('location:login.php');
+}else{
+  //collect data for teacher
+  $teacher_id= $_SESSION["teacher_id"];
+  $query= "SELECT * FROM teacher WHERE teacher_id = '{$teacher_id}' ";
+  $result=mysqli_query($db_connc,$query);
+  $row=mysqli_fetch_assoc($result);
+
+  $fname = $row["firstname"];
+  $lname = $row["lastname"];
+  $mname = $row["middlename"];
+  $age = $row["age"];
+  $address = $row["address"];
+  $gender = $row["sex"];
+  $dob = $row["dob"];
+  $username = $row["username"];
+  $class = $row["class"];
+  $subject = $row["subject"];
 }
  
 //$student_id=$_SESSION['id'];
@@ -92,7 +109,7 @@ if(!isset($_SESSION['teacher_id'])){
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block"><?php echo $fname." ".$lname ?></a>
         </div>
       </div>
 
@@ -183,19 +200,19 @@ if(!isset($_SESSION['teacher_id'])){
                   <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">ANYILE IFEANYI CORDELIA</h3>
+                <h3 class="profile-username text-center"><?php echo $fname." ".$lname." ".$mname ?></h3>
 
-                <p class="text-muted text-center">51294858HT</p>
+                <p class="text-muted text-center"><?php echo $username ?></p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>AGE</b> <a class="float-right">34</a>
+                    <b>AGE</b> <a class="float-right"><?php echo $age ?></a>
                   </li>
                   <li class="list-group-item">
-                    <b>SEX</b> <a class="float-right">FEMALE</a>
+                    <b>SEX</b> <a class="float-right"><?php echo strtoupper($gender) ?></a>
                   </li>
                   <li class="list-group-item">
-                    <b>DATE OF BIRTH</b> <a class="float-right">11/01/1995</a>
+                    <b>DATE OF BIRTH</b> <a class="float-right"><?php echo $dob ?></a>
                   </li>
                 </ul>
 
@@ -215,21 +232,21 @@ if(!isset($_SESSION['teacher_id'])){
                 <strong><i class="fas fa-book mr-1"></i> CLASS</strong>
 
                 <p class="text-muted">
-                  PRIMARY 5
+                  <?php echo $class ?>
                 </p>
 
                 <hr>
 
                 <strong><i class="fas fa-map-marker-alt mr-1"></i> HOME ADDRESS </strong>
 
-                <p class="text-muted">LAGOS NIGERIA</p>
+                <p class="text-muted"><?php echo $address ?></p>
 
                 <hr>
 
                 <strong><i class="fas fa-pencil-alt mr-1"></i> SUBJECTS</strong>
 
                 <p class="text-muted">
-                  <span class="tag tag-danger">GENERAL CLASS TEACHER</span>
+                  <span class="tag tag-danger"><?php echo $subject ?></span>
                 </p>
 
                 <hr>

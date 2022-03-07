@@ -5,10 +5,19 @@ if(!isset($_SESSION['admin_id'])){
     header('location:login.php');
 }else{
     //collect data for students
-    $admin_id=$_SESSION['admin_id'];
+    $admin_id= $_SESSION["admin_id"];
     $query= "SELECT * FROM admin WHERE admin_id = '{$admin_id}' ";
     $result=mysqli_query($db_connc,$query);
     $row=mysqli_fetch_assoc($result);
+
+    $fname = $row["firstname"];
+    $lname = $row["lastname"];
+    $mname = $row["middlename"];
+    $role = $row["role"];
+    $address = $row["address"];
+    $gender = $row["sex"];
+    $dob = $row["dob"];
+    $username = $row["username"];
 }
 ?>
 <!DOCTYPE html>
